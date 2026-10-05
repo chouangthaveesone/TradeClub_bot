@@ -2,9 +2,9 @@ name: CDC ActionZone Alert Bot
 
 on:
   schedule:
-    # ໃຫ້ Script ເຮັດວຽກທຸກໆ 15 ນາທີ (ຫຼື ປັບຕາມ Timeframe ທີ່ເທຣດ)
+    # ໃຫ້ເຮັດວຽກທຸກໆ 15 ນາທີ (ຫຼື ປັບຕາມ Timeframe ທີ່ເທຣດ)
     - cron: '*/15 * * * *'
-  workflow_dispatch: # ປຸ່ມກົດຮັນManual ໄດ້ເອງ
+  workflow_dispatch: # ປຸ່ມກົດ Run Manual ໄດ້ເອງ
 
 jobs:
   run-alert-bot:
