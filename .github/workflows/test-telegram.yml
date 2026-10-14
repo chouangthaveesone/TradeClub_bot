@@ -1,0 +1,19 @@
+name: Test Telegram Connection
+
+on:
+  workflow_dispatch: # ອະນຸຍາດให้ກົດຣັນດ້ວຍມື (Manual Trigger) ໄດ້ໃນໜ້າ GitHub Actions
+
+jobs:
+  send-test-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Test Message to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          MESSAGE="🚀 <b>Test Message</b>%0AGitHub Actions connected to Telegram successfully!"
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+            -d "chat_id=$TELEGRAM_CHAT_ID" \
+            -d "text=$MESSAGE" \
+            -d "parse_mode=HTML"
