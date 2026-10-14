@@ -4,7 +4,7 @@ import pandas as pd
 import pandas_ta as ta
 import yfinance as yf
 
-TOKEN = os.getenv("TELEGRAM_TOKEN")
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 def send_telegram(msg):
