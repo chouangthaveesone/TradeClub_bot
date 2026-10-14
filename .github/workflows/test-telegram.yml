@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Send Test Message to Telegram
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           PAYLOAD=$(jq -n \
@@ -17,6 +17,6 @@ jobs:
             --arg text "🚀 Test Message%0AGitHub Actions connected successfully!" \
             '{chat_id: $chat_id, text: $text, parse_mode: "HTML"}')
 
-          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
             -H "Content-Type: application/json" \
             -d "$PAYLOAD"
